@@ -11,5 +11,9 @@ public with sharing class AccountAddressController extends BaseController {
 	public void someTest2(){
 		System.debug('dfgdfg');
 	}
+	
+	public List<Account> getAccountsByName(String accountName){
+		return [SELECT ID FROM Account WHERE Name = :accountName];
+	}
 
 }
