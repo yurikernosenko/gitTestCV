@@ -1,0 +1,134 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" controller="iwlsitetemplatecontroller" >
+<html>
+    <head>
+        <title><apex:insert name="PageTitle">Salesforce Ideas - Home</apex:insert></title>
+        <script src="{!URLFOR($Resource.IWLResources, '/javascript/IWLJqueryLib.js')}"></script>
+        <script src="{!URLFOR($Resource.IWLResources, '/javascript/IWLCommons.js')}"></script>
+        <script src="{!URLFOR($Resource.IWLResources, '/javascript/IWLAvatarUpload.js')}"></script>
+        <script src="{!URLFOR($Resource.IWLResources, '/javascript/IWLListview.js')}"></script>
+        <script src="{!URLFOR($Resource.IWLResources, '/javascript/IWLSlideshow.js')}"></script>
+        <script src="{!URLFOR($Resource.IWLResources, '/javascript/IWLPostIdea.js')}"></script>
+        <script src="{!URLFOR($Resource.IWLResources, '/javascript/IWLDetailview.js')}"></script>
+        <script src="{!URLFOR($Resource.IWLResources, '/javascript/momentmin.js')}"></script>
+    
+        <link rel="stylesheet" type="text/css" href="{!$Resource.IWLResources}/styles/cssreset-context-min.css"/>
+        <link rel="stylesheet" type="text/css" href="{!$Resource.IdeaDemoPage}"/>
+
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.IWLResources, 'styles/IWLSearchDefault.css')}"/>
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.IWLResources, 'styles/IWLCommonsDefault.css')}"/>
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.IWLResources, 'styles/IWLAvatarUploadDefault.css')}"/>
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.IWLResources, 'styles/IWLListviewDefault.css')}"/>
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.IWLResources, 'styles/IWLSlideshowDefault.css')}"/>
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.IWLResources, 'styles/IWLPostIdeaDefault.css')}"/>
+<link rel="stylesheet" type="text/css" href="{!URLFOR($Resource.IWLResources, 'styles/IWLDetailviewDefault.css')}"/>
+    
+<!--link rel="stylesheet" type="text/css" href="{!$Resource.IWLSearchDefault}"/>
+<link rel="stylesheet" type="text/css" href="{!$Resource.IWLCommonsDefault}"/>
+<link rel="stylesheet" type="text/css" href="{!$Resource.IWLAvatarUploadDefault}"/>
+<link rel="stylesheet" type="text/css" href="{!$Resource.IWLListviewDefault}"/>
+<link rel="stylesheet" type="text/css" href="{!$Resource.IWLSlideshowDefault}"/>
+<link rel="stylesheet" type="text/css" href="{!$Resource.IWLPostIdeaDefault}"/>
+<link rel="stylesheet" type="text/css" href="{!$Resource.IWLDetailviewDefault}"/-->
+    
+        
+        
+        
+        <link rel="stylesheet" type="text/css" href="{!$Resource.demoIWLLeaderboard}"/>
+        <link rel="stylesheet" type="text/css" href="{!$Resource.demoIWLSlideShow}"/>
+        <link rel="stylesheet" type="text/css" href="{!$Resource.demoIWLPostIdea}"/>
+        <link rel="stylesheet" type="text/css" href="{!$Resource.demoIWLIdeas}"/>
+        <script type="text/javascript" src="{!$Resource.IWLDemoScript}"></script>
+        
+        <script type="text/javascript">
+            function categoriesTextToLinks() {
+                var categoriesCount = 0;
+                jQuery('.IWLListviewRelatedTopicsContainer, .IWLDetailViewRelatedTopicsContainer').each(function() {
+                    categoriesCount = jQuery(this).find('.IWLDetailViewRelatedTopic, .IWLListviewRelatedTopic').length;
+                    jQuery(this).find('.IWLDetailViewRelatedTopic, .IWLListviewRelatedTopic').each(function(index) {
+                        if (index < categoriesCount - 1) {
+                            jQuery(this).html('<a href="/apex/iwlIdeas?category=' + encodeURIComponent(jQuery(this).text()) + '" >' + jQuery(this).text() + '</a><div class="categoriesSeparator">|</div>');
+                            
+                        } else {
+                            jQuery(this).html('<a href="/apex/iwlIdeas?category=' + encodeURIComponent(jQuery(this).text()) + '" >' + jQuery(this).text() + '</a>');
+                        }
+                    });
+                });
+            }
+        
+            jQuery(document).ready( function() {
+                jQuery('.IWLPostIdeaWidgetViewPostIdeaHome .IWLPostIdeaNextButtonLabel').each(function(index) {
+                    jQuery(this).html('Post an {!$ObjectType.Idea.Label}').css({'width': '100px', 'margin-left': '5px'});
+                }); 
+                jQuery('.IWLPostIdeaWidgetViewPostToTheme .IWLPostIdeaNextButtonLabel').each(function(index) {
+                    jQuery(this).html('Post to {!$ObjectType.IdeaTheme.Label}').css({'width': '118px', 'margin-left': '0px'});
+                }); 
+                categoriesTextToLinks();
+                
+            });
+        </script>
+    </head>
+    <body>
+        <apex:outputPanel layout="none" rendered="{!load}">
+        <div id="wrapper">
+            <div id="top" onclick="window.location.href='{!$Page.iwlHome}';">
+                <div id="top-middle">
+                    <img src="{!$Resource.ideaslogo}" alt="Ideas" />
+                </div>                
+            </div>
+            <div id="body-wrap">
+                <div id="leftsidebar">
+                    <div id="user">
+                        <div id="userProfilePhoto"> 
+                            <chatter:userPhotoUpload />
+                        </div>
+                        <div id="userProfileLinks">
+                            <p><a href="{!$Page.iwlUserProfile}">My account</a></p>
+                            <p><a href="{!$Page.iwlIdeas}?mine=true">My Ideas</a></p>
+                        </div>
+                    </div>
+                    <c:IWLSearchWidget DeveloperName="SearchIdeas"/>
+                    
+                    <apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.it == null}">
+                    <ul>
+                        <li class="{!IF($CurrentPage.parameters.category == null, 'selected', '')}" onclick="window.location.href='{!$Page.iwlIdeas}';" style="cursor:pointer;">All Categories</li>
+                        <li class="{!IF($CurrentPage.parameters.category == 'Category One', 'selected', '')}" onclick="window.location.href='{!$Page.iwlIdeas}?category=' + encodeURIComponent('Category One');" style="cursor:pointer;">Category One</li>
+                        <li class="{!IF($CurrentPage.parameters.category == 'Category Two', 'selected', '')}" onclick="window.location.href='{!$Page.iwlIdeas}?category=' + encodeURIComponent('Category Two');" style="cursor:pointer;">Category Two</li>
+                    </ul>
+                    </apex:outputPanel>
+                     <apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.it != null}">
+                    <ul>
+                        <li class="{!IF($CurrentPage.parameters.category == null, 'selected', '')}" onclick="window.location.href='{!$Page.iwlIdeaThemes}?it=1';" style="cursor:pointer;">All Categories</li>
+                        <li class="{!IF($CurrentPage.parameters.category == 'Category One', 'selected', '')}" onclick="window.location.href='{!$Page.iwlIdeaThemes}?it=1&category=' + encodeURIComponent('Category One');" style="cursor:pointer;">Category One</li>
+                        <li class="{!IF($CurrentPage.parameters.category == 'Category Two', 'selected', '')}" onclick="window.location.href='{!$Page.iwlIdeaThemes}?it=1&category=' + encodeURIComponent('Category Two');" style="cursor:pointer;">Category Two</li>
+                    </ul>
+                    </apex:outputPanel>
+                </div>
+                <div id="container">
+                    <apex:insert name="MainBanner"></apex:insert>
+                    <div class="menu">
+                        <ul>
+                            <li class="{!IF($CurrentPage.parameters.it != null, 'selected', '')}" style="cursor:pointer;" onclick="window.location.href='{!$Page.iwlIdeaThemes}?it=1';">{!$ObjectType.IdeaTheme.LabelPlural}</li>
+                            <li class="{!IF($CurrentPage.parameters.it == null, 'selected', '')}" style="cursor:pointer;" onclick="window.location.href='{!$Page.iwlIdeas}';">{!$ObjectType.Idea.LabelPlural}</li>
+                            
+                        </ul>
+                    </div>
+                    <apex:insert name="MainPanel"/>                    
+                </div>
+                <div id="rightsidebar">
+                    <c:IWLListviewWidgetView DeveloperName="Leaderboard"/>
+                    
+                    <c:IWLListviewWidgetView DeveloperName="UserRating"/>
+                    <div class="module">
+                        <h2>Follow us on</h2>
+                        <img src="{!$Resource.IWLResources}/styles/images/icons/facebook.png" class="followusImage" />
+                        <img src="{!$Resource.IWLResources}/styles/images/icons/twitter.png" class="followusImage"/>
+                        <img src="{!$Resource.IWLResources}/styles/images/icons/linkedin.png" class="followusImage"/>
+                    </div>
+                </div>
+            </div>
+            <div id="footer"></div>
+        </div>
+        </apex:outputPanel>
+    </body>
+</html>
+</apex:page>

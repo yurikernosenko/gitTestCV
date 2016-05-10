@@ -1,0 +1,10 @@
+<apex:page controller="TestFieldVisibility">
+
+<apex:form >
+<apex:inputField value="{!objectForTest.SimpleTextField__c }"/>
+{!wrapper.wrapPropInWrapper}
+<apex:inputText value="{!wrapper.wrapPropInWrapper}"/>
+<input type="text" value="{!wrapProp }"/>
+</apex:form>
+
+</apex:page>

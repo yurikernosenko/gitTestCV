@@ -1,0 +1,16 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false">
+<apex:composition template="iwlsitetemplate">
+
+    <apex:define name="MainBanner">
+        <c:IWLSlideshowWidgetView DeveloperName="MainSlideshow" />
+    </apex:define>
+
+    <apex:define name="MainPanel">
+        
+        
+        <c:IWLPostIdeaWidgetView DeveloperName="PostIdeaHome"/>
+        <c:IWLListviewWidgetView DeveloperName="IdeasListHome" />
+    </apex:define>
+</apex:composition>
+
+</apex:page>

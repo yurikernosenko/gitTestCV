@@ -1,0 +1,16 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" >
+<apex:composition template="iwlsitetemplate">
+    <apex:define name="PageTitle">Salesforce Ideas - {!$ObjectType.Idea.Label} Detail</apex:define>
+    
+    <apex:define name="MainPanel">         
+    
+            <apex:outputLink value="{!$Page.iwlIdeas}" style="position: relative;top: 10px;">&larr; Back to All {!$ObjectType.Idea.LabelPlural}</apex:outputLink>
+            
+             <c:IWLDetailViewWidget DeveloperName="IdeaDetail" IdRecord="{!$CurrentPage.parameters.id}" rendered="{!$CurrentPage.parameters.id != null}"></c:IWLDetailViewWidget>
+             
+             <c:IWLDetailViewWidget DeveloperName="IdeaDetail" IdRecord="{!$CurrentPage.parameters.IWLNewIdeaId}" rendered="{!$CurrentPage.parameters.IWLNewIdeaId != null}"></c:IWLDetailViewWidget>
+             
+    </apex:define>
+</apex:composition>
+
+</apex:page>

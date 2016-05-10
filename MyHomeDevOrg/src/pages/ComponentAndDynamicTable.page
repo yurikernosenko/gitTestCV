@@ -1,0 +1,9 @@
+<apex:page controller="ComponentAndDynamicTable">
+	
+ 	<apex:form >
+ 		<apex:repeat value="{!acc}" var="ac">
+ 			<c:firstComponent myValue="{!ac.Id}" textColor="Red"/>
+ 			<br></br>
+ 		</apex:repeat>
+ 	</apex:form>
+</apex:page>

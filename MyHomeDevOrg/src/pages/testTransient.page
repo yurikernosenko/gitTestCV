@@ -1,0 +1,13 @@
+<apex:page controller="ExampleTransientController">
+  T1: {!t1} <br/>
+  T2: {!t2} <br/>
+ <script>
+
+</script>
+  <apex:form >
+    <apex:commandLink value="refresh"/>
+    <apex:commandButton value="To home" action="{!toHomePage}"/>
+    
+   
+  </apex:form>
+</apex:page>

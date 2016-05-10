@@ -1,0 +1,171 @@
+<apex:page controller="CalendarViewController">
+
+    <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css"/>
+    <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.print.css" html-media="print" />
+    
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"/>
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"/>    
+    <apex:includeScript value="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"/>
+    <apex:includeScript value="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.js"/>
+    <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"/>
+    
+    <style>    
+        .context-menu__items{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        
+        .context-menu {
+          position: absolute;
+          z-index: 10;
+          border: 1px solid #fff000;
+          background: #ffffff;
+          display:none;
+        }
+        
+        .context-menu__link, .context-menu__link:hover{
+            text-decoration: none;
+        }
+        
+        .context-menu--active {
+          display: block;
+        }
+        
+        .task {
+          display: flex;
+          justify-content: space-between;
+          padding: 12px 0;
+          border-bottom: solid 1px #dfdfdf;
+        }
+        
+        .task:last-child {
+          border-bottom: none;
+        }
+        
+        .test{
+            display:inline-block;
+            width:80px;
+            height:100%;
+            word-wrap: break-word;
+            border:1px solid #000000;
+            
+        }
+        
+    </style>
+    
+    <script type="text/javascript">
+        j$ = jQuery.noConflict();
+        j$(document).ready(function(){
+            
+            j$("#calendar").on('contextmenu', '.fc-body', function(e) {
+                //j$('.context-menu').remove();
+                //var template = _.template(j$("#tmpl-context-menu").html());                
+                //j$(e.target).html(template);
+                
+                /*var xClick = e.pageX - j$(this).offset().left;
+                var yClick = e.pageY - j$(this).offset().top;*/
+                var menuPosition = getPosition(e);
+                //var menuPosition = j$(".context-menu").offset();
+
+                //j$(".context-menu").css({'left':menuPosition.x, 'top':menuPosition.y});
+                
+                j$("body").append(j$(".context-menu"));
+                j$(".context-menu").css({'left':menuPosition.x, 'top':menuPosition.y});
+                j$(".context-menu").show();
+                e.preventDefault();
+            });
+        
+        
+        
+            j$("#calendar").fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                editable: false,
+                events: [
+                    <apex:repeat value="{!eventsForAllUsers}" var="e">
+                        {
+                            title: '{!e.title}',
+                            start: '{!e.startString}',
+                            end: '{!e.endString}',
+                            allDay: {!e.allDay},
+                            className: '{!e.className}',
+                            editable: 'true',
+                            durationEditable: 'true',
+                            startEditable: 'true'
+                        },
+                    </apex:repeat>
+                ]
+            });
+        });
+        
+        function getPosition(e) {
+            var posx = 0;
+            var posy = 0;
+            
+            if (!e) var e = window.event;
+
+            if (e.pageX || e.pageY) {
+                posx = e.pageX;
+                posy = e.pageY;
+            } else if (e.clientX || e.clientY) {
+                posx = e.clientX + document.body.scrollLeft + 
+                                   document.documentElement.scrollLeft;
+                posy = e.clientY + document.body.scrollTop + 
+                                   document.documentElement.scrollTop;
+            }
+            
+            return {
+                x: posx,
+                y: posy
+            }
+        }
+    </script>
+
+    <div id="calendar"></div>
+    
+    <nav class="context-menu">
+        <ul class="context-menu__items">
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link">
+                    <i class="fa fa-eye"></i> View Task
+                </a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link">
+                    <i class="fa fa-edit"></i> Edit Task
+                </a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link">
+                    <i class="fa fa-times"></i> Delete Task
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+<script type="text/template" id="tmpl-context-menu">
+    <nav class="context-menu">
+        <ul class="context-menu__items">
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link">
+                    <i class="fa fa-eye"></i> View Task
+                </a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link">
+                    <i class="fa fa-edit"></i> Edit Task
+                </a>
+            </li>
+            <li class="context-menu__item">
+                <a href="#" class="context-menu__link">
+                    <i class="fa fa-times"></i> Delete Task
+                </a>
+            </li>
+        </ul>
+    </nav>
+</script>
+</apex:page>

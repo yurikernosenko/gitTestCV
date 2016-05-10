@@ -1,0 +1,43 @@
+<apex:page standardController="Account" extensions="AccountEditDetailPage" action="{!getRedir}">
+<!--action="{!nullValue(redir.url, urlFor($Action.Account.Edit, account.id, null, true))}"-->
+    <apex:form >
+<apex:pageBlock title="Edit Account" id="thePageBlock" mode="edit">
+<apex:pageMessages />
+<apex:pageBlockButtons >
+<apex:commandButton value="Save" action="{!save}"/>
+<apex:commandButton value="Cancel" action="{!cancel}"/>               
+</apex:pageBlockButtons>
+<apex:actionRegion >
+<apex:pageBlockSection title="Basic Information" columns="1">
+<apex:inputField value="{!account.name}"/>
+</apex:pageBlockSection>
+</apex:actionRegion>
+
+            <apex:pageBlockSection title="Information" columns="1">
+
+                <apex:inputField value="{!account.Fax}" required="true"/>
+                <apex:outputField value="{!account.NumberofLocations__c}" />
+
+                <apex:inputField value="{!account.Industry}"/>
+
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+{!account.NumberofLocations__c}
+<br></br>
+
+<apex:outputText value="{0, number,##############0.00}">
+<apex:param value="{!account.NumberofLocations__c}" />
+</apex:outputText>
+
+<br></br>
+<apex:outputText value="{0, number,##############0.0000}">
+<apex:param value="{!account.NumberofLocations__c}" />
+</apex:outputText>
+
+<br></br>
+<apex:outputText value="{0, number,##############0}">
+<apex:param value="{!account.NumberofLocations__c}" />
+</apex:outputText>
+    </apex:form>
+</apex:page>

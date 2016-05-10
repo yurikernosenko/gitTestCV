@@ -1,0 +1,31 @@
+<apex:page controller="loadingSpinnerCtrl3">
+  <apex:form id="form">
+    <apex:pageBlock >
+      <apex:pageBlockButtons location="top">
+        <apex:actionStatus id="SaveButtonStatus">
+          <apex:facet name="stop">
+            <apex:outputPanel >
+              <apex:commandButton action="{!doSave}" value="Save"/>
+            </apex:outputPanel>
+          </apex:facet>
+          <apex:facet name="start">
+            <apex:outputPanel >
+              <apex:commandButton value="Save" disabled="true"/>
+            </apex:outputPanel>
+          </apex:facet>
+        </apex:actionStatus>
+      </apex:pageBlockButtons>
+      <apex:selectList id="selected_list" value="{!dropdown1}" required="false" size="1">
+        <apex:selectOption itemvalue="None" itemLabel="--None--"/>
+        <apex:selectOption itemvalue="1" itemLabel="First"/>
+        <apex:selectOption itemvalue="2" itemLabel="Second"/>
+        <apex:actionSupport event="onchange" reRender="dropdown2" action="{!spin}" status="SaveButtonStatus"/>
+      </apex:selectList>
+      <apex:selectList id="dropdown2" required="false"  size="1">
+        <apex:selectOption itemvalue="None" itemLabel="--None--"/>
+        <apex:selectOptions value="{!items}" />
+      </apex:selectList>
+    </apex:pageBlock>
+  </apex:form>
+  <apex:pageMessages />
+</apex:page>

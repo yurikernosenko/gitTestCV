@@ -1,0 +1,5 @@
+<apex:page standardController="Contact">
+<apex:form >
+<apex:commandButton onclick="window.location.href='https://google.com';target='_parent';" value="Test"/>
+</apex:form>
+</apex:page>

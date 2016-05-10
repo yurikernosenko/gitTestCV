@@ -1,0 +1,21 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" controller="iwlIdeaThemesController">
+<apex:composition template="iwlsitetemplate">
+    <apex:define name="PageTitle">Salesforce Ideas - {!$ObjectType.IdeaTheme.LabelPlural}</apex:define>
+    
+    <apex:define name="MainPanel">
+        <!-- apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.mine != null}">
+            <c:IWLListviewWidgetView DeveloperName="MyIdeas" />
+        </apex:outputPanel>
+        <apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.category == 'cirrus'}">
+            <c:IWLListviewWidgetView DeveloperName="CirrusThemes" />
+        </apex:outputPanel>
+        <apex:outputPanel layout="none" rendered="{!$CurrentPage.parameters.category == 'top'}">
+            <c:IWLListviewWidgetView DeveloperName="TopThemes" />
+        </apex:outputPanel-->
+        <apex:outputPanel layout="none" rendered="{!doLoad}">
+            <c:IWLListviewWidgetView DeveloperName="IdeaThemesList" Widget="{!listview}"/>
+        </apex:outputPanel>
+    </apex:define>
+</apex:composition>
+
+</apex:page>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>osutils</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <namespacePrefix>osutils</namespacePrefix>
+    <types>
+        <members>Utils</members>
+        <members>UtilsTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Limits__mdt.APIName__c</members>
+        <members>Limits__mdt.Count__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Limits__mdt</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Limits__mdt-Limit Layout</members>
+        <name>Layout</name>
+    </types>
+    <version>36.0</version>
+</Package>

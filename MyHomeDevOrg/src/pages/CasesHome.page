@@ -1,0 +1,48 @@
+<apex:page showHeader="true" sidebar="true" controller="DummyClass">
+<script src="{!URLFOR($Resource.IWLResources, '/javascript/IWLJqueryLib.js')}"></script>
+<apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js" / >
+<script type="text/javascript">
+    j$ = jQuery.noConflict();
+    jQuery(document).ready(function(){
+
+        j$('#views').change(function(){
+            showCasesName(jQuery('select#views').val());
+        });
+    });
+    
+
+</script>
+<apex:form >
+    <div>
+        <a href="{!$Label.test1}"> Test</a>
+    </div>
+    <apex:actionFunction name="showCasesName" action="{!showCases}" reRender="cases">
+        <apex:param name="viewName" value="" assignTo="{!view}"/>
+    </apex:actionFunction>
+    Static title text 
+    Profile name {!$Profile.Name}
+    <br></br>
+    User Last name {!$User.LastName}
+    <br></br>
+    user name {!userName}
+    <br></br>
+    user id {!userId}
+    <br></br>
+    profile name {!profileName}
+
+    <br></br>
+    {!userType}
+
+    Users {!users}
+
+    <select id="views">
+        <apex:repeat value="{!options}" var="option">
+            <option value="{!options[option]}">{!option}</option>   
+        </apex:repeat>
+    </select>
+
+    <apex:dataTable value="{!cases}" var="case" id="cases">
+        <apex:column value="{!case.CaseNumber}"/>
+    </apex:dataTable>
+</apex:form>   
+</apex:page>

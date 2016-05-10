@@ -1,0 +1,22 @@
+<apex:page standardController="Opportunity" recordSetVar="opportunities"
+                        
+    tabStyle="Opportunity" sidebar="false">
+    <p>Enter an alphabetic character for the "Close Date," 
+       then click Save to see what happens.</p>
+    <apex:form >
+        <apex:pageBlock >
+        <apex:pageMessage summary="This pageMessage will always display. Validation error 
+           messages appear in the pageMessages component." severity="warning" strength="3" />
+        <apex:pageMessages />
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!opportunities}" var="opp">
+                <apex:column value="{!opp.name}"/>
+                <apex:column headerValue="Close Date">
+                    <apex:inputField value="{!opp.closeDate}"/>
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,116 @@
+<apex:page controller="TaskCustomObj" docType="html-5.0" renderAs="{!renderAttribut}" contentType="{!pageContentType}" id="page">
+    <apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js" / >
+    <apex:includescript value="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" />
+    <apex:stylesheet value="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
+    <script>
+            j$ = jQuery.noConflict();
+            j$(document).ready( function () {
+                var contactTable = j$('[id$="theTable"]').DataTable({
+                    
+                });
+            
+            });
+        </script>
+        
+    <!--<script>
+        function saveAsPdf(){
+            var documentName = prompt('Please, enter name');
+            if(documentName != null){
+                var docName = document.getElementById("[id$=documentName]");
+                downloadDoc(documentName);
+            } else alert("Can't save doc.");
+        }
+    </script>-->
+
+    <apex:form id="displayAsPDF" rendered="{!renderAttribut != 'pdf' }">
+        
+        <apex:outputPanel layout="block">
+          <apex:inputText value="{!testText}"/>
+          <apex:outputPanel layout="block" onclick="alert('{!testText}');searchEntities(); ">Search</apex:outputPanel>
+         </apex:outputPanel>
+<apex:actionFunction action="{!testStringMethod}" name="searchEntities" rerender="displayAsPDF" status="loading"/>
+    
+    
+        <!--<apex:actionFunction name="downloadDoc" action="{!downloadDocument}" rerender="page, mainForm">
+            <apex:param name="docName" value=""/>
+        </apex:actionFunction>-->
+       <!-- <apex:commandButton rendered="{!renderAttribut != 'pdf'}" value="Preview" action="{!renderPageAsPDF}" />-->
+        <apex:commandLink value="Preview" action="{!renderPageAsPDF}" rendered="{!renderAttribut != 'pdf'}" target="_blank"/>
+        <br/>
+
+        <apex:outputText value="Please enter document name"/>
+        <apex:inputText value="{!documentName}"/>
+        <apex:commandButton value="Download" action="{!downloadDocument}" />
+    </apex:form>
+
+    <apex:form id="mainForm">
+        renderAttribut = {!renderAttribut}
+        <br/>
+        pageContentType = {!pageContentType}
+        <!-- Global variables block start-->
+        <apex:pageBlock id="globalVariables" >
+            <apex:pageBlockSection collapsible="true" columns="2" id="section1">
+                <apex:pageBlockSectionItem >
+                    <span>
+                        Global variable UITheme =  {!$User.UITheme }
+                    </span>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <span>
+                        Global variable UIThemeDisplayed =  {!$User.UIThemeDisplayed}
+                    </span>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <!-- Global variables block end-->
+
+         <apex:actionFunction name="delRec" action="{!deleteThisRecord}" rerender="mainBlock">
+            <apex:param name="recordId" value=""/>
+        </apex:actionFunction>
+
+        <!--Apex dataList block start -->
+        <apex:dataList value="{!tasks}" var="t">
+            <apex:outputText value="{!t.Name}"/>
+        </apex:dataList>
+        <!--Apex dataList block start -->
+
+    Apex data table 
+    <apex:dataTable value="{!tasks}" var="t" id="theTable" rowClasses="odd,even" styleClass="tableClass">
+        <apex:facet name="caption">table caption</apex:facet>
+        <apex:facet name="header">table header</apex:facet>
+        <apex:facet name="footer">table footer</apex:facet>
+        <apex:column >
+            <apex:facet name="header">Name</apex:facet>
+            <apex:facet name="footer">column footer</apex:facet>
+            <apex:outputText value="{!t.Name}"/>
+        </apex:column>
+    </apex:dataTable>
+        <apex:pageBlock id="mainBlock">
+        Page block table example
+            <apex:pageBlockSection >
+            
+                <apex:pageBlockTable value="{!tasks}" var="t">
+                    <apex:column >
+                        <apex:outputLink value="/{!t.Id}/e?retURL=%2F{!t.Id}" target="_blank">Edit</apex:outputLink>
+                        /
+                        <!--<a href="" style="text-decoration: underline;" onclick="if (window.confirm('Are you sure?')) delRec('{!t.Id}');">Delete</a>
+                        <apex:outputLink value="" onclick="if (window.confirm('Are you sure?')) delRec('{!t.Id}');">Delete</apex:outputLink>-->
+                        
+                        <!--<apex:outputLink value="{!URLFOR($Action.TaskCustomObj__c.Delete, t.id)}" onclick="return window.confirm('Are you sure?');">>Delete</apex:outputLink>-->
+                        <apex:commandButton value="Delete" action="{!deleteThisRecord}" rerender="mainBlock">
+                        <apex:param name="recordId" assignTo="{!recordId}" value="{!t.id}"/>
+                        </apex:commandButton>
+                    </apex:column>
+                    
+                    <apex:column >
+                        <apex:outputLink value="/{!t.Id}" target="_blank">{!t.Name}</apex:outputLink>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        
+    </apex:form>
+    
+    
+</apex:page>

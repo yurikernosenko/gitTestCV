@@ -1,0 +1,86 @@
+<apex:page Controller="PaginationExtension">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rivets/0.8.1/rivets.bundled.min.js"></script>
+    <script>
+    /*function showDialog(json){
+        //alert(json);
+        
+        
+        jQuery( "#book" ).dialog({
+            appendTo: '#results',
+            modal: true,
+            draggable: false,
+            resizable: false,            
+            width: 400,
+            buttons: {
+                "Close": function() {
+                    jQuery(this).dialog("close");
+                }
+        	},
+            create : function(event, ui){
+                var book = {Id:"Awesome Book Title", Name:"$5.15"};
+            	rivets.bind(jQuery(this), {book: book});
+            }
+    	});
+  }*/
+  </script>
+
+  <div id="results">
+        <!--   <div id="book" >
+	<p data-text="book:id"></p>
+	<span data-text="book:name"></span>
+</div> -->
+        <apex:form >
+        <!-- <apex:commandButton action="{!start}" value="Start" reRender="pb"/> -->
+        <input type="button" onclick="start()" value="start"/>
+        <apex:actionFunction action="{!start}" name="start" reRender="pb"/>
+        <apex:pageBlock id="pb">
+            <table>
+            Some text
+                <apex:repeat value="{!Accounts}" var="a">
+                {!a}
+                    <tr>
+                        <td>
+                    		{!a.Id}
+                    	</td>
+                        <td>
+                    		{!a.Name}
+                    	</td>
+                        <td>
+                    		<apex:repeat value="{!a.Contacts}" var="con">
+                                {!con.LastName}
+                            </apex:repeat>
+                    	</td>
+                    </tr>
+                </apex:repeat>
+            </table>
+            
+                        <!-- <a href="" onclick="return showDialog('{!aWrapper[a.Id].wrapperToJSON}')">{!a.Id.Contacts.size}</a> -->
+            
+            <!--<apex:pageBlockTable value="{!Accounts}" var="a">
+                <apex:column value="{!aWrapper[a.Id].acc.Name}"/>
+                <apex:column value="{!aWrapper[a.Id].acc.Type}"/>
+                <apex:column value="{!aWrapper[a.Id].acc.BillingCity}"/>
+                <apex:column value="{!aWrapper[a.Id].acc.BillingState}"/>
+                <apex:column value="{!aWrapper[a.Id].acc.BillingCountry}"/>
+                <apex:column value="{!aWrapper[a.Id]}"/>
+                
+            </apex:pageBlockTable>-->
+            <apex:panelGrid columns="7">
+                <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!setCon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!setCon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+                <!-- <apex:commandButton status="fetchStatus" reRender="pb" value="Refresh" action="{!refresh}" title="Refresh Page"/> -->
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                    <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                </apex:outputPanel>
+            </apex:panelGrid>
+        </apex:pageBlock>
+    </apex:form>
+    </div>
+    
+</apex:page>

@@ -1,0 +1,13 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" controller="iwlIdeasController">
+<apex:composition template="iwlsitetemplate">
+    <apex:define name="PageTitle">Salesforce Ideas - {!$ObjectType.Idea.LabelPlural}</apex:define>
+    
+    <apex:define name="MainPanel">
+        <apex:outputPanel layout="none" rendered="{!doLoad}">
+            <c:IWLPostIdeaWidgetView DeveloperName="PostIdeaHome"/>
+            <c:IWLListviewWidgetView DeveloperName="IdeasList" Widget="{!listview}" />
+           
+        </apex:outputPanel>
+    </apex:define>
+</apex:composition>
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:component >
+ <apex:attribute name="myValue" description="This is the value for the component." type="String" required="true"/>
+{!myValue}
+        <analytics:reportChart reportId="{!myValue}" rendered="true" cacheResults="false" showRefreshButton="false"></analytics:reportChart>
+
+    
+</apex:component>

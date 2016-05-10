@@ -1,0 +1,513 @@
+!SESSION 2016-05-10 20:57:08.369 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_73
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2016-05-10 21:00:18.678
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Home'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2016-05-10 21:00:19.077
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: Service Temporarily Unavailable. ; version: 1.100.0.v20160217-0435
+!STACK 0
+org.apache.http.client.HttpResponseException: Service Temporarily Unavailable
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.HttpResponses$ProgressMonitorResponseHandler.handleResponse(HttpResponses.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.HttpResponses$ProgressMonitorResponseStringHandler.handleResponse(HttpResponses.java:92)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.HttpResponses$ProgressMonitorResponseStringHandler.handleResponse(HttpResponses.java:1)
+	at org.apache.http.client.fluent.Response.handleResponse(Response.java:90)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.HttpResponses.getContentWithProgress(HttpResponses.java:55)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:69)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.osgi 2 0 2016-05-10 21:00:32.562
+!MESSAGE While loading class "com.salesforce.ide.ui.internal.startup.ForceStartup", thread "Thread[Worker-5,5,main]" timed out waiting (5000ms) for thread "Thread[main,6,main]" to finish starting bundle "com.salesforce.ide.ui_36.0.0.201601221512 [936]". To avoid deadlock, thread "Thread[Worker-5,5,main]" is proceeding but "com.salesforce.ide.ui.internal.startup.ForceStartup" may not be fully initialized.
+!STACK 0
+org.osgi.framework.BundleException: Unable to acquire the state change lock for the module: osgi.identity; osgi.identity="com.salesforce.ide.ui"; type="osgi.bundle"; version:Version="36.0.0.201601221512"; singleton:="true" [id=936] STARTED [STARTED]
+	at org.eclipse.osgi.container.Module.lockStateChange(Module.java:329)
+	at org.eclipse.osgi.container.Module.start(Module.java:389)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:454)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:107)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:531)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:324)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:327)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:402)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:352)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:344)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:160)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:573)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:174)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:905)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:243)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:55)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:285)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.getExecutableExtension(EarlyStartupRunnable.java:120)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:68)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench$56.run(Workbench.java:2852)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.152
+!MESSAGE  WARN [2016-05-10 21:02:01,148] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'Certificate': Unable to get bean for id 'Certificate'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.157
+!MESSAGE  WARN [2016-05-10 21:02:01,156] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'AuraDefinitionBundle': Unable to get bean for id 'AuraDefinitionBundle'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.162
+!MESSAGE  WARN [2016-05-10 21:02:01,161] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ExternalDataSource': Unable to get bean for id 'ExternalDataSource'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.166
+!MESSAGE  WARN [2016-05-10 21:02:01,165] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'NamedCredential': Unable to get bean for id 'NamedCredential'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.173
+!MESSAGE  WARN [2016-05-10 21:02:01,172] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'CustomFeedFilter': Unable to get bean for id 'CustomFeedFilter'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.179
+!MESSAGE  WARN [2016-05-10 21:02:01,179] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'FlowDefinition': Unable to get bean for id 'FlowDefinition'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.186
+!MESSAGE  WARN [2016-05-10 21:02:01,185] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'MatchingRules': Unable to get bean for id 'MatchingRules'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.191
+!MESSAGE  WARN [2016-05-10 21:02:01,190] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ChannelLayout': Unable to get bean for id 'ChannelLayout'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.195
+!MESSAGE  WARN [2016-05-10 21:02:01,194] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'SharingRules': Unable to get bean for id 'SharingRules'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.199
+!MESSAGE  WARN [2016-05-10 21:02:01,199] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'DelegateGroup': Unable to get bean for id 'DelegateGroup'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.204
+!MESSAGE  WARN [2016-05-10 21:02:01,203] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ManagedTopics': Unable to get bean for id 'ManagedTopics'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.208
+!MESSAGE  WARN [2016-05-10 21:02:01,207] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'KeywordList': Unable to get bean for id 'KeywordList'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.211
+!MESSAGE  WARN [2016-05-10 21:02:01,211] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ModerationRule': Unable to get bean for id 'ModerationRule'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.216
+!MESSAGE  WARN [2016-05-10 21:02:01,215] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'CorsWhitelistOrigin': Unable to get bean for id 'CorsWhitelistOrigin'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.220
+!MESSAGE  WARN [2016-05-10 21:02:01,219] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ActionLinkGroupTemplate': Unable to get bean for id 'ActionLinkGroupTemplate'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.225
+!MESSAGE  WARN [2016-05-10 21:02:01,224] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'TransactionSecurityPolicy': Unable to get bean for id 'TransactionSecurityPolicy'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.229
+!MESSAGE  WARN [2016-05-10 21:02:01,228] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'SynonymDictionary': Unable to get bean for id 'SynonymDictionary'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.233
+!MESSAGE  WARN [2016-05-10 21:02:01,232] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'PathAssistant': Unable to get bean for id 'PathAssistant'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.237
+!MESSAGE  WARN [2016-05-10 21:02:01,236] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'LiveChatSensitiveDataRule': Unable to get bean for id 'LiveChatSensitiveDataRule'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.241
+!MESSAGE  WARN [2016-05-10 21:02:01,240] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'PlatformCachePartition': Unable to get bean for id 'PlatformCachePartition'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.962
+!MESSAGE  WARN [2016-05-10 21:02:01,961] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'Certificate': Unable to get bean for id 'Certificate'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.966
+!MESSAGE  WARN [2016-05-10 21:02:01,966] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'AuraDefinitionBundle': Unable to get bean for id 'AuraDefinitionBundle'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.971
+!MESSAGE  WARN [2016-05-10 21:02:01,970] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ExternalDataSource': Unable to get bean for id 'ExternalDataSource'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.975
+!MESSAGE  WARN [2016-05-10 21:02:01,974] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'NamedCredential': Unable to get bean for id 'NamedCredential'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.980
+!MESSAGE  WARN [2016-05-10 21:02:01,980] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'CustomFeedFilter': Unable to get bean for id 'CustomFeedFilter'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.987
+!MESSAGE  WARN [2016-05-10 21:02:01,986] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'FlowDefinition': Unable to get bean for id 'FlowDefinition'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.994
+!MESSAGE  WARN [2016-05-10 21:02:01,993] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'MatchingRules': Unable to get bean for id 'MatchingRules'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:01.998
+!MESSAGE  WARN [2016-05-10 21:02:01,998] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ChannelLayout': Unable to get bean for id 'ChannelLayout'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.002
+!MESSAGE  WARN [2016-05-10 21:02:02,002] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'SharingRules': Unable to get bean for id 'SharingRules'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.007
+!MESSAGE  WARN [2016-05-10 21:02:02,006] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'DelegateGroup': Unable to get bean for id 'DelegateGroup'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.011
+!MESSAGE  WARN [2016-05-10 21:02:02,011] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ManagedTopics': Unable to get bean for id 'ManagedTopics'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.015
+!MESSAGE  WARN [2016-05-10 21:02:02,015] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'KeywordList': Unable to get bean for id 'KeywordList'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.019
+!MESSAGE  WARN [2016-05-10 21:02:02,019] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ModerationRule': Unable to get bean for id 'ModerationRule'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.023
+!MESSAGE  WARN [2016-05-10 21:02:02,022] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'CorsWhitelistOrigin': Unable to get bean for id 'CorsWhitelistOrigin'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.027
+!MESSAGE  WARN [2016-05-10 21:02:02,026] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'ActionLinkGroupTemplate': Unable to get bean for id 'ActionLinkGroupTemplate'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.031
+!MESSAGE  WARN [2016-05-10 21:02:02,030] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'TransactionSecurityPolicy': Unable to get bean for id 'TransactionSecurityPolicy'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.035
+!MESSAGE  WARN [2016-05-10 21:02:02,034] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'SynonymDictionary': Unable to get bean for id 'SynonymDictionary'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.039
+!MESSAGE  WARN [2016-05-10 21:02:02,038] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'PathAssistant': Unable to get bean for id 'PathAssistant'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.043
+!MESSAGE  WARN [2016-05-10 21:02:02,042] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'LiveChatSensitiveDataRule': Unable to get bean for id 'LiveChatSensitiveDataRule'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:02.047
+!MESSAGE  WARN [2016-05-10 21:02:02,046] (ComponentFactory.java:getComponentBean:1149) - Unable to get component for id 'PlatformCachePartition': Unable to get bean for id 'PlatformCachePartition'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.669
+!MESSAGE  WARN [2016-05-10 21:02:52,668] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'DocuSign For Salesforce/package.xml': Can't retrieve non-customizable CustomObject named: DocuSignUserSettings__c
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.674
+!MESSAGE  WARN [2016-05-10 21:02:52,673] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'DocuSign For Salesforce/package.xml': Can't retrieve non-customizable CustomObject named: DocuSign_Setting__c
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.678
+!MESSAGE  WARN [2016-05-10 21:02:52,677] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'DocuSign For Salesforce/package.xml': Can't retrieve non-customizable CustomObject named: DocuSignOrgSettings__c
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.682
+!MESSAGE  WARN [2016-05-10 21:02:52,681] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'DocuSign For Salesforce/package.xml': Can't retrieve non-customizable CustomObject named: DocuSignUserSettings__c
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.685
+!MESSAGE  WARN [2016-05-10 21:02:52,685] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'DocuSign For Salesforce/package.xml': Can't retrieve non-customizable CustomObject named: DocuSign_Setting__c
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.689
+!MESSAGE  WARN [2016-05-10 21:02:52,688] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'DocuSign For Salesforce/package.xml': Can't retrieve non-customizable CustomObject named: DocuSignOrgSettings__c
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.692
+!MESSAGE  WARN [2016-05-10 21:02:52,692] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce Connected Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Salesforce_Touch.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.696
+!MESSAGE  WARN [2016-05-10 21:02:52,696] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce Connected Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Salesforce_Mobile_Dashboards.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.700
+!MESSAGE  WARN [2016-05-10 21:02:52,699] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce Connected Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Forcecom_Migration_Tool.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.703
+!MESSAGE  WARN [2016-05-10 21:02:52,703] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce Connected Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Forcecom_IDE.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.707
+!MESSAGE  WARN [2016-05-10 21:02:52,706] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce Connected Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Dataloader_Partner.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.711
+!MESSAGE  WARN [2016-05-10 21:02:52,710] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce Connected Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Dataloader_Bulk.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.714
+!MESSAGE  WARN [2016-05-10 21:02:52,714] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce Connected Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Workbench.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.718
+!MESSAGE  WARN [2016-05-10 21:02:52,717] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce Connected Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Salesforce_for_Outlook.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.721
+!MESSAGE  WARN [2016-05-10 21:02:52,721] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce1 and Chatter Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Salesforce_Chatterbox.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.725
+!MESSAGE  WARN [2016-05-10 21:02:52,724] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce1 and Chatter Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:SalesforceA.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.728
+!MESSAGE  WARN [2016-05-10 21:02:52,728] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce1 and Chatter Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Salesforce1_for_Windows.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.732
+!MESSAGE  WARN [2016-05-10 21:02:52,731] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce1 and Chatter Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Chatter_for_iOS.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.736
+!MESSAGE  WARN [2016-05-10 21:02:52,735] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce1 and Chatter Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Chatter_for_BlackBerry.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.739
+!MESSAGE  WARN [2016-05-10 21:02:52,738] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce1 and Chatter Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Chatter_for_Android.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.743
+!MESSAGE  WARN [2016-05-10 21:02:52,742] (ProjectController.java:handleRetrieveResults:762) - Failed to retrieve: 'Salesforce1 and Chatter Apps/package.xml': Metadata API received improper input. Please ensure file name and capitalization is correct. Load of metadata from db failed for metadata of type:ConnectedApp and file name:Chatter_Desktop.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.799
+!MESSAGE  WARN [2016-05-10 21:02:52,798] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Dataloader_Bulk_oauth/ConnectivityDevConfigs/Dataloader_Bulk_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.807
+!MESSAGE  WARN [2016-05-10 21:02:52,806] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Dataloader_Bulk_oauth/modules/sf_com_apps__Dataloader_Bulk_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.825
+!MESSAGE  WARN [2016-05-10 21:02:52,824] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Dataloader_Bulk', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.830
+!MESSAGE  WARN [2016-05-10 21:02:52,829] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Dataloader_P5r_oauth/ConnectivityDevConfigs/Dataloader_P5r_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.835
+!MESSAGE  WARN [2016-05-10 21:02:52,834] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Dataloader_P5r_oauth/modules/sf_com_apps__Dataloader_P5r_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.839
+!MESSAGE  WARN [2016-05-10 21:02:52,839] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Dataloader_Partner', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.844
+!MESSAGE  WARN [2016-05-10 21:02:52,843] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Forcecom_IDE_oauth/ConnectivityDevConfigs/Forcecom_IDE_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.848
+!MESSAGE  WARN [2016-05-10 21:02:52,848] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Forcecom_IDE_oauth/modules/sf_com_apps__Forcecom_IDE_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.853
+!MESSAGE  WARN [2016-05-10 21:02:52,852] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Forcecom_IDE', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.857
+!MESSAGE  WARN [2016-05-10 21:02:52,857] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Forcecom_Migration_Tool_oauth/ConnectivityDevConfigs/Forcecom_Migration_Tool_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.861
+!MESSAGE  WARN [2016-05-10 21:02:52,860] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Forcecom_Migration_Tool_oauth/modules/sf_com_apps__Forcecom_Migration_Tool_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.867
+!MESSAGE  WARN [2016-05-10 21:02:52,866] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Forcecom_Migration_Tool', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.871
+!MESSAGE  WARN [2016-05-10 21:02:52,870] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S8e_M4e_Dashboards_oauth/ConnectivityDevConfigs/S8e_M4e_Dashboards_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.875
+!MESSAGE  WARN [2016-05-10 21:02:52,874] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S8e_M4e_Dashboards_oauth/modules/sf_com_apps__S8e_M4e_Dashboards_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.879
+!MESSAGE  WARN [2016-05-10 21:02:52,878] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Salesforce_Mobile_Dashboards', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.883
+!MESSAGE  WARN [2016-05-10 21:02:52,882] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S8e_T3h_oauth/ConnectivityDevConfigs/S8e_T3h_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.887
+!MESSAGE  WARN [2016-05-10 21:02:52,886] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S8e_T3h_oauth/modules/sf_com_apps__S8e_T3h_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.891
+!MESSAGE  WARN [2016-05-10 21:02:52,890] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Salesforce_Touch', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.895
+!MESSAGE  WARN [2016-05-10 21:02:52,894] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S8e_for_Outlook_oauth/ConnectivityDevConfigs/S8e_for_Outlook_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.899
+!MESSAGE  WARN [2016-05-10 21:02:52,898] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S8e_for_Outlook_oauth/modules/sf_com_apps__S8e_for_Outlook_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.903
+!MESSAGE  WARN [2016-05-10 21:02:52,902] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Salesforce_for_Outlook', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.916
+!MESSAGE  WARN [2016-05-10 21:02:52,906] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Workbench_oauth/ConnectivityDevConfigs/Workbench_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.921
+!MESSAGE  WARN [2016-05-10 21:02:52,921] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/Workbench_oauth/modules/sf_com_apps__Workbench_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:52.926
+!MESSAGE  WARN [2016-05-10 21:02:52,925] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Workbench', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 4 0 2016-05-10 21:02:52.930
+!MESSAGE ERROR [2016-05-10 21:02:52,929] (ProjectPackageList.java:generateComponents:483) - Filepath-zip mapping is null or empty for package 'Salesforce Connected Apps' [0A320000000AMMbCAO] - skipping component generation
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.038
+!MESSAGE  WARN [2016-05-10 21:02:53,037] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_Desktop_oauth/ConnectivityDevConfigs/C5r_Desktop_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.043
+!MESSAGE  WARN [2016-05-10 21:02:53,042] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_Desktop_oauth/modules/sf_chttr_apps__C5r_Desktop_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.047
+!MESSAGE  WARN [2016-05-10 21:02:53,047] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Chatter_Desktop', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.052
+!MESSAGE  WARN [2016-05-10 21:02:53,051] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_Android_oauth_android/AndroidPushApplicationSetup/C5r_for_Android_oauth_androidAndroidPushApplicationSetup.AndroidPushApplicationSetup', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.056
+!MESSAGE  WARN [2016-05-10 21:02:53,055] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_Android_oauth_android/modules/sf_chttr_apps__C5r_for_Android_oauth_android', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.060
+!MESSAGE  WARN [2016-05-10 21:02:53,059] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_Android_oauth/ConnectivityDevConfigs/C5r_for_Android_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.064
+!MESSAGE  WARN [2016-05-10 21:02:53,063] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_Android_oauth/modules/sf_chttr_apps__C5r_for_Android_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.068
+!MESSAGE  WARN [2016-05-10 21:02:53,067] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Chatter_for_Android', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.072
+!MESSAGE  WARN [2016-05-10 21:02:53,071] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_BlackBerry_oauth/ConnectivityDevConfigs/C5r_for_BlackBerry_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.076
+!MESSAGE  WARN [2016-05-10 21:02:53,075] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_BlackBerry_oauth/modules/sf_chttr_apps__C5r_for_BlackBerry_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.080
+!MESSAGE  WARN [2016-05-10 21:02:53,079] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Chatter_for_BlackBerry', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.084
+!MESSAGE  WARN [2016-05-10 21:02:53,083] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_iOS_oauth_apple/ApplePushApplicationSetup/C5r_for_iOS_oauth_appleApplePushApplicationSetup.ApplePushApplicationSetup', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.088
+!MESSAGE  WARN [2016-05-10 21:02:53,087] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_iOS_oauth_apple/modules/sf_chttr_apps__C5r_for_iOS_oauth_apple', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.091
+!MESSAGE  WARN [2016-05-10 21:02:53,091] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_iOS_oauth/ConnectivityDevConfigs/C5r_for_iOS_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.095
+!MESSAGE  WARN [2016-05-10 21:02:53,095] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/C5r_for_iOS_oauth/modules/sf_chttr_apps__C5r_for_iOS_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.099
+!MESSAGE  WARN [2016-05-10 21:02:53,099] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Chatter_for_iOS', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.103
+!MESSAGE  WARN [2016-05-10 21:02:53,103] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S91_for_Windows_oauth/ConnectivityDevConfigs/S91_for_Windows_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.107
+!MESSAGE  WARN [2016-05-10 21:02:53,107] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S91_for_Windows_oauth/modules/sf_chttr_apps__S91_for_Windows_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.111
+!MESSAGE  WARN [2016-05-10 21:02:53,111] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Salesforce1_for_Windows', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.115
+!MESSAGE  WARN [2016-05-10 21:02:53,115] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S9A_oauth/ConnectivityDevConfigs/S9A_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.120
+!MESSAGE  WARN [2016-05-10 21:02:53,119] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S9A_oauth/modules/sf_chttr_apps__S9A_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.124
+!MESSAGE  WARN [2016-05-10 21:02:53,123] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/SalesforceA', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.128
+!MESSAGE  WARN [2016-05-10 21:02:53,127] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S8e_C8x_oauth/ConnectivityDevConfigs/S8e_C8x_oauth_devConfig.ConnectivityDevConfig', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.132
+!MESSAGE  WARN [2016-05-10 21:02:53,131] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'modules/S8e_C8x_oauth/modules/sf_chttr_apps__S8e_C8x_oauth', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:02:53.136
+!MESSAGE  WARN [2016-05-10 21:02:53,135] (ComponentFactory.java:getComponentByFilePath:614) - No id found for filepath 'applicationManifests/Salesforce_Chatterbox', tagging as component of type 'Unknown'
+
+
+!ENTRY com.salesforce.ide.core 4 0 2016-05-10 21:02:53.139
+!MESSAGE ERROR [2016-05-10 21:02:53,139] (ProjectPackageList.java:generateComponents:483) - Filepath-zip mapping is null or empty for package 'Salesforce1 and Chatter Apps' [0A320000000AJVGCA4] - skipping component generation
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:03:36.763
+!MESSAGE  WARN [2016-05-10 21:03:36,760] (ProjectPackageList.java:saveResources:1161) - Component list in project package 'Salesforce Connected Apps' is empty.  No resources to save.
+
+
+!ENTRY com.salesforce.ide.core 2 0 2016-05-10 21:03:46.669
+!MESSAGE  WARN [2016-05-10 21:03:46,669] (ProjectPackageList.java:saveResources:1161) - Component list in project package 'Salesforce1 and Chatter Apps' is empty.  No resources to save.
+

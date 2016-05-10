@@ -1,0 +1,72 @@
+<apex:page sidebar="false" showHeader="false" standardStylesheets="false" controller="DashboardController">
+    <html>
+        <head>
+            <apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js" / >
+            <apex:includescript value="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js" />
+            <apex:stylesheet value="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css" />
+            <apex:stylesheet value="{!URLFOR($Resource.IdeasPageCommunity, 'ideasPageCommunity/css/main.css')}"/>   
+            <script type="text/javascript">
+                j$ = jQuery.noConflict();
+            </script>
+        </head>
+        <body>
+            <apex:outputPanel layout="none">
+                <div id="wrapper">
+                    <div class="header-container-wrapper">
+                        <div class="span12 widget-span widget-type-cell page-center">
+                            <div class="row-fluid" style="height:140px; display:inline-block; ">
+                                <span style="float:left"> 
+                                    <a href="http://www.intelliflo.com/?__hstc=107218525.98711c6148297bc7efbba911f247e810.1421835602048.1421835602048.1421940823692.2&amp;__hssc=107218525.4.1421940823692&amp;__hsfp=1200125206" style="border-width:0px;border:0px;" target="_blank"> 
+                                        <img src="{!$Resource.IdeasPageCommunity}/ideasPageCommunity/images/Intelliflo_Logo.png" style="width:156px;border-width:0px;border:0px;" width="156" alt="Intelliflo" title="Intelliflo"> 
+                                        </img>
+                                    </a> 
+                                </span>
+        
+                                <div style="padding-left: 70%;">
+                                    Search Here
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="row-fluid-wrapper row-depth-2 row-number-1" style="background-color:#295099; height:60px;">
+                        <div class="span12 widget-span widget-type-cell navigation-wrapper page-center">
+                            <div class="cell-wrapper layout-widget-wrapper">
+                                    <div class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal">
+                                        <ul style="width:100%"> 
+                                            <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children"> <a href="{!$Page.CasesHome}" class="ui-link" style="margin-top: -7px;">Cases</a> </li> 
+                                            <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children"> <a href="{!$Page.iwlIdeas}?mine=true" class="ui-link" style="margin-top: -7px;">Ideas</a> </li> 
+                                            <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children"> <a href="#" class="ui-link" style="margin-top: -7px;">Back to Community</a> </li> 
+                                        </ul>                                                                                           
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="span12 widget-span widget-type-cell navigation-wrapper page-center">
+                        <div id="body-wrap">
+                            <div id="container">
+                                <div>
+                                <apex:repeat value="{!reports}" var="report">
+                                    <c:DashboardComponent myValue="{!report.Id}"/>
+                                </apex:repeat>
+                                    <div>
+
+                                    <c:DashboardComponent myValue="00O20000006W7ct"/>
+</div>
+                                    <div><c:DashboardComponent myValue="00O20000006VTSq"/></div>
+                                </div>
+                                <div>
+                                    <c:CasesListViewComponent />
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </apex:outputPanel>
+        </body>
+    </html>
+</apex:page>

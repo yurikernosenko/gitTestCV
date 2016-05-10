@@ -1,0 +1,59 @@
+<apex:page controller="CaseListController">
+<apex:enhancedList height="300" rowsPerPage="25"
+        id="Cases" customizable="False"  listId="00B20000007oi9L"/>
+<!--        <apex:ListViews type="Case" />   -->
+<apex:form >
+     
+        
+<apex:actionFunction name="search" action="{!search}" reRender="resultSection">
+    <apex:param name="searchText" value="" assignTo="{!searchText}"/>
+</apex:actionFunction>
+
+<apex:outputPanel layout="none" id="searchBlock">
+    <apex:inputText id="searchValue" />
+    <input type="button" onclick="search()">Search</input>
+</apex:outputPanel>
+
+<apex:pageblock id="pg" >
+<apex:dataTable value="{!cases}" var="case"  rules="all" border="1" columnsWidth="100px,100px,100px" cellspacing="8" cellpadding="8" rows="5">
+    <apex:facet name="header">Cases</apex:facet>
+    
+    <apex:column >
+    <apex:facet name="header">CaseNumber</apex:facet>
+    <apex:outputLink value="/{!case.Id}">
+    <apex:outputText value="{!case.CaseNumber}"></apex:outputText>
+    </apex:outputLink>
+    </apex:column>
+
+    <apex:column >
+    <apex:facet name="header">Type</apex:facet>
+    <apex:outputText value="{!case.Type}"></apex:outputText>
+    </apex:column>
+
+    <apex:column >
+    <apex:facet name="header">Status</apex:facet>
+    <apex:outputText value="{!case.Status}"></apex:outputText>
+    </apex:column>
+    
+    <apex:column >
+    <apex:facet name="header">Priority</apex:facet>
+    <apex:outputText value="{!case.Priority}"></apex:outputText>
+    </apex:column>
+</apex:dataTable>
+
+
+<apex:commandButton value="Previous" action="{!previous}" reRender="pg" disabled="{!prevBool}"/>
+<apex:commandButton value="Next" action="{!next}" reRender="pg" disabled="{!nextBool}"/>  
+</apex:pageblock>
+<div style="padding-left: 150px">
+    <apex:chart data="{!caseObject}" height="500px;" width="500px;">
+          <apex:pieSeries dataField="data" labelField="name"/>
+          <apex:legend position="right"/>
+      </apex:chart>
+</div>
+<div>
+  <img src="/servlet/servlet.ChartServer?rsid=0FL20000001tLXB&ruid=00520000003iJdp&did=01Z20000000ppGE&s=7&fs=10&tfg=12&tfs=-16777216&explode=0&c=pie&cs=0&title=&eh=no&compo=yes&fg=-16777216&bg1=-1&bg2=-1&bgdir=2&dl1=Type&dl2=&l=2&sax=yes&Yman=no&nc=0&actUrl=%2F00O20000006W7ct&sd=1&scv=yes&sct=no&spt=no&bd=yes&cu=EUR&ab=X&u=0&vt=0&ab2=Y&u2=0&vt2=0&vl0=Record+Count&spoc=no&topn=no&gc0=-1&gc1=-1&gc2=-1&sona=0&refreshts=1423903318000"/>
+</div>
+
+</apex:form>
+</apex:page>

@@ -1,0 +1,39 @@
+<apex:page showHeader="true" sidebar="true">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        var j$ = jQuery.noConflict();
+
+        j$(document).ready(function(){
+            var topicContainerForIE = j$('#topics-container-for-ie');
+            var topicContainerDefault = j$('#topics-container-default');
+
+            if (msieversion()) {
+                j$(document.getElementById("{!$Component.enhanced}")).remove();
+
+
+            } else {
+                j$(document.getElementById("{!$Component.simple}")).remove();
+
+            }
+        });
+
+        function msieversion() {
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))  // If Internet Explorer, return version number
+            {
+                return true;
+            }
+
+            return false;
+        }
+    </script>
+        <!--apex:outputText id="topicRenderStyle">enhanced</apex:outputText>
+        <apex:variable id="topicRenderStyle2" value="enhanced" var="topicMode"/-->
+       
+
+
+    <topics:widget id="simple" entity="0012000001Y6xWa" renderStyle="simple"></topics:widget>
+    <topics:widget id="enhanced" entity="0012000001Y6xWa" renderStyle="enhanced"></topics:widget>
+</apex:page>

@@ -1,0 +1,135 @@
+<!-- <apex:page standardController="Account" extensions="InputFileController" action="{!toHomePage}"> -->
+<apex:page standardController="Account" extensions="InputFileController">
+<style>
+    body { font-family: 'Arial Unicode MS'; }
+    a {text-decoration: none;}
+    body a:hover {text-decoration: none;}
+    a.btn4Link {color: #ffffff; }
+    .btn4Link {
+        width: 3%;
+        height:5%;
+        background: #3498db;
+        background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+        background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+        background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+        background-image: -o-linear-gradient(top, #3498db, #2980b9);
+        background-image: linear-gradient(to bottom, #3498db, #2980b9);
+        -webkit-border-radius: 28;
+        -moz-border-radius: 28;
+        border-radius: 28px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+    }
+
+    .btn4Link:hover {
+        background: #3cb0fd;
+        background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+    }
+</style>
+
+
+    <apex:messages />
+    <apex:form >
+        <apex:pageBlock >
+        <apex:pageblocksection id="attachments">
+                <apex:repeat value="{!attachments}" var="attach">
+                {!attach.Id}
+                </apex:repeat>
+            </apex:pageblocksection>
+        </apex:pageBlock>
+        <apex:actionFunction action="{!doAttachment}" name="dosave" reRender="attachments"/>
+        <input type="button" name="Save" onclick="dosave()" value="Save1"/>
+      </apex:form>  
+        
+    <apex:form >
+        <apex:pageBlock >
+            
+
+            <apex:inputFile value="{!resume}" filename="{!fileName}" id="file" contentType="{!contentType}"  accept=".png, .jpg"></apex:inputFile>  
+
+            <!--<apex:pageBlockSection >
+                <apex:inputFile value="{!attachment.body}" filename="{!attachment.Name}" id="file" contentType="{!attachment.ContentType}"  accept=".png, .jpg"></apex:inputFile>   
+                <apex:outputText rendered="true" value="{!s}"></apex:outputText>
+                <apex:commandButton action="{!doAttachment}" value="Save"/> 
+            </apex:pageBlockSection>-->
+        </apex:pageBlock>
+   
+
+        <!--<apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:inputFile value="{!doc.body}" filename="{!doc.Name}" id="document"  accept=".png, .jpg"></apex:inputFile> 
+                <apex:commandLink action="{!doAttachment2}" value="Save" target="_top" styleClass="btn4Link"></apex:commandLink>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock > 
+        <apex:pageBlockTable value="{!acounts}" var="acc">
+            <apex:column value="{!acc.Id}"></apex:column>
+            <apex:column headerValue="Name">
+                <a href="/{!acc.id}"
+                    id="lookup{!acc.id}opp4"
+                    onblur="LookupHoverDetail.getHover('lookup{!acc.id}opp4').hide();"
+                    onfocus="LookupHoverDetail.getHover('lookup{!acc.id}opp4', '/{!acc.id}/m?retURL=/{!acc.id}&isAjaxRequest=1').show();"
+                    onmouseout="LookupHoverDetail.getHover('lookup{!acc.id}opp4').hide();"
+                    onmouseover="LookupHoverDetail.getHover('lookup{!acc.id}opp4', '/{!acc.id}/m?retURL=/{!acc.id}&isAjaxRequest=1').show();">
+                    {!acc.Name}
+                </a>
+            </apex:column>
+        </apex:pageBlockTable>
+        </apex:pageBlock>
+        <apex:pageBlock >
+        <apex:repeat value="{!acounts}" var="acc">
+        <apex:pageBlockTable value="{!$ObjectType.Account.FieldSets.Test1}" var="f">
+            
+                <apex:column value="{!f}" />
+                <apex:column value="{!f.Label}"/>
+                
+            <apex:column value="{!acc[f.fieldPath]}"/>
+        </apex:pageBlockTable> 
+        </apex:repeat>
+        </apex:pageBlock>
+
+
+        <apex:pageBlock id="testPageBlock1" title="Test block" helpTitle="Ask google" helpUrl="http://google.com" tabStyle="JustTestObject__c" mode="detail">
+            <apex:pageBlockButtons title="First block of buttons">
+                <apex:commandButton action="{!save}" value="Save"/>
+                <apex:commandButton action="{!toHomePage}" value="To home"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="My Content Section" columns="2">
+            </apex:pageBlockSection>
+            <apex:pageBlockTable value="{!acounts}" var="acc">
+                <apex:column value="{!acc.ID}"/>
+                <apex:column value="{!acc.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+        
+        <apex:pageBlock id="testPageBlock2" title="Test block" helpTitle="Ask google" helpUrl="http://google.com" tabStyle="JustTestObject__c" mode="maindetail">
+            <apex:pageBlockTable value="{!acounts}" var="acc">
+                <apex:column value="{!acc.ID}"/>
+                <apex:column value="{!acc.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+        <apex:pageBlock id="testPageBlock3" title="Test block" helpTitle="Ask google" helpUrl="http://google.com" tabStyle="JustTestObject__c" mode="edit">
+            <apex:pageBlockTable value="{!acounts}" var="acc">
+                <apex:column value="{!acc.ID}"/>
+                <apex:column value="{!acc.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+        <apex:pageBlock id="testPageBlock4" title="Test block" helpTitle="Ask google" helpUrl="http://google.com" tabStyle="JustTestObject__c" mode="inlineEdit">
+            <apex:pageBlockTable value="{!acounts}" var="acc">
+                <apex:column value="{!acc.ID}"/>
+                <apex:column value="{!acc.Name}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>  --> 
+        
+    </apex:form>
+</apex:page>

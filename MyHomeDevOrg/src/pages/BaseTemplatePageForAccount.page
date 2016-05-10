@@ -1,0 +1,5 @@
+<apex:page showHeader="true" sidebar="true">
+	<apex:define name="header">Header<br></br></apex:define>
+	<apex:define name="body">Body<br></br></apex:define>
+	<apex:define name="footer">Footer</apex:define>
+</apex:page>

@@ -1,0 +1,211 @@
+<apex:component >
+    <apex:includeScript value="/soap/ajax/31.0/connection.js"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <apex:attribute required="true" name="individual" id="individuals" type="YKP__Individual__c" description="individual record"/>
+
+     <script type="text/javascript">
+        jQuery.noConflict();
+        
+        function retrieveDataFromHerouku(url, callback, error){
+            var client = new XMLHttpRequest();
+            client.open("GET", url, true);
+            client.send();
+            client.onreadystatechange = function() {
+                if (this.readyState == 4){
+                    if (this.status == 200){
+                        callback(JSON.parse(this.responseText)); 
+                    } else {
+                        var responseText = this.responseText.replace("\{", "");
+                        responseText = responseText.replace("\}", "");
+                        var errors = '{"status":"'+this.status+'", "statusText":"'+this.statusText+'", ' + responseText + '}';
+                        errorHandler(JSON.parse(errors));
+                    }
+                }
+            } 
+        }
+
+        function errorHandler(err){
+            alert(err);
+        }
+
+        function test(){
+            retrieveDataFromHerouku("https://devsm360service.herokuapp.com/entity/aggregated?ids=20", callback, errorHandler);
+        }
+
+        function callback(response){
+            alert(response);
+        }
+        
+        //jQuery(document).ready(function(){
+            /*var element = jQuery('div #{!individual}');
+            var imageTag = jQuery(element[0]).find('div.header>img')[0];
+            var x360EntityId = jQuery(imageTag).attr('id');
+            if(x360EntityId == ''){
+                jQuery(imageTag).attr('src', '/img/seasonLogos/2015_summer.png');
+                return;
+            }
+            retrieveProfiles(x360EntityId, callback);*/
+
+            //parseResponce();
+            /*var ids = '';
+            jQuery('div.header>img').each(function() {
+                ids += jQuery(this).attr('Id') + ',';
+            });
+            ids = ids.substring(0, ids.length - 1);
+            retrieveProfiles(ids, callback);*/
+            /*var url = 'https://' + window.location.host;
+            console.log(url);
+            var client = new XMLHttpRequest();
+            client.open("GET", "https://devsm360service.herokuapp.com/entity/aggregated?ids=20");
+            client.send();
+            console.log(client);*/
+/*
+var client = new XMLHttpRequest();
+client.open("GET", "https://devsm360service.herokuapp.com/entity/aggregated?ids=20", true);
+//client.setRequestHeader('Access-Control-Allow-Origin', 'https://ykp.eu0.visual.force.com');
+client.setRequestHeader('Access-Control-Request-Headers', 'Salesforce'); 
+client.onload = function() {
+    var text = client.responseText;
+    alert('Response from CORS request to ' + text + ': ' + client.getAllResponseHeaders());
+    console.log(client.getAllResponseHeaders());
+  };
+
+  client.onerror = function() {
+    alert('Woops, there was an error making the request.' + client);
+  };
+client.send();
+;*/
+        //});
+
+        /*function retrieveProfiles(ids, callback){
+            var client = new XMLHttpRequest();
+            var url = "https://devsm360service.herokuapp.com/entity/aggregated?ids=" + ids;
+            client.open("GET", url, true);
+            //client.setRequestHeader('Access-Control-Request-Headers', 'Salesforce'); 
+            client.onload = function() {
+                callback(client.responseText);
+            };
+
+            client.onerror = function() {
+                console.log('Woops, there was an error making the request.');
+            };
+            client.send();
+        }
+
+        function callback(response){
+            console.log(response);
+            var obj  = jQuery.parseJSON(response);
+            var selector = '#'+ obj[0].id;
+
+            if(obj[0].profiles[0].photo != null){
+                jQuery(selector).attr('src', obj[0].profiles[0].photo);    
+                return;
+            } else {
+                jQuery(selector).attr('src', '/img/seasonLogos/2015_summer.png');
+            }
+        }*/
+        
+        /*function retrieveProfiles(ids, callback){
+            sforce.connection.init('{!$Api.Session_ID}', 'REST web service url'); 
+            sforce.connection.remoteFunction({
+               url : "https://devsm360service.herokuapp.com/entity/aggregated?ids="+ids,
+               requestHeaders: {"Authorization":"Bearer {!$Api.Session_ID}", "Content-Type":"text/plain"}, 
+               method: "GET",
+               async: true,
+               cache: false,
+                onSuccess : function(response) {
+                    callback(response);
+                    console.log(response);
+                },
+                onFailure : function(response) {
+                    alert("Failed" + response)
+                }
+            });
+        }
+
+
+        function callback(response){
+            console.log(response);
+            var obj  = jQuery.parseJSON(response);
+            console.log('Af');
+            jQuery('div.header>img').each(function() {
+                //jQuery(this).attr('src', );
+            });
+        }
+
+        function showDialog(individualRecord, contacts){
+            jQuery("#modalCard").dialog({
+                appendTo: "#sbc",
+                modal: true,
+                draggable: false,
+                resizable: false,
+                show: 'blind',
+                hide: 'blind',
+                width: 400,
+                buttons: {
+                    "Close": function() {
+                        jQuery(this).dialog("close");
+                    }
+                }
+            });
+            console.log(individualRecord);
+            console.log(contacts);
+        }*/
+
+        /*function parseResponce(){
+            var responce = '[{"id":20,"profiles":[{"profileId":0,"id":null,"profileConfiguration":{"channel":"CRUNCHBASE"},"name":null,"profileURL":null,"description":"Accel Partners is a venture and growth equity firm that funds companies from inception through the growth stage.","channelSpecificData":[{"label":"cruncbaseUUID","value":null},{"label":"type","value":null},{"label":"primaryRole","value":null},{"label":"organization","value":null},{"label":"homepageDomain","value":null},{"label":"homepageURL","value":null},{"label":"facebookURL","value":null},{"label":"twitterURL","value":null},{"label":"linkedInURL","value":null},{"label":"stockSymbol","value":null},{"label":"locationCity","value":null},{"label":"locationRegion","value":null},{"label":"locationCountryCode","value":null},{"label":"firstName","value":null},{"label":"lastName","value":null},{"label":"title","value":null},{"label":"organizationCruncbaseURL","value":null}],"photo":"https://www.crunchbase.com/organization/accel-partners/primary-image/raw?w=100"}],"officerId":0,"name":"Accel Partners","notes":null,"type":null}]';
+            var jsonObjects = jQuery.parseJSON(responce);
+            
+            jQuery('div.header>img').each(function() {
+                var image = this;
+                if(jQuery(image).attr('html-id') == ''){
+                    jQuery(image).attr('src', '/img/seasonLogos/2015_summer.png');
+                    return;
+                }
+
+                for(i=0; i < jsonObjects.length; i++){
+                    if(jQuery(image).attr('html-id') == jsonObjects[i].id){
+                        jQuery(image).attr('src', jsonObjects[i].profiles[0].photo);    
+                        return;
+                    } else {
+                        jQuery(image).attr('src', '/img/seasonLogos/2015_summer.png');
+                    }
+                }
+            });
+        }*/
+
+    </script>
+
+    <div  id="{!individual.ID}"> 
+    <input type="checkbox" onclick="test();" />
+        <div class="header">
+            <img src="" id="{!individual.YKP__X360Entity_Id_c__c}"/>
+            {!individual.Name} + {!individual.ID}
+
+        </div>
+        <div class="body">
+            <div>
+                <apex:outputPanel rendered="{!individual.YKP__ContactRoles__r.size > 0}">
+                    <a class="contactRoles" href="" onclick="showDialog('{!individual}', '{!individual.YKP__ContactRoles__r}')">{!individual.YKP__ContactRoles__r.size} assosiated Contact Roles</a>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!individual.YKP__ContactRoles__r.size = 0}">
+                    <span>
+                        {!individual.YKP__ContactRoles__r.size} assosiated Contact Roles
+                    </span>
+                </apex:outputPanel>
+            </div>
+            <div>
+                connections: 
+            </div>
+        </div>
+        <div class="footer" style="background-color:#307A87; border-color:#F1F1F1; height:20px;">
+            <span>This is the Individual:</span>
+            <input type="checkbox" />
+        </div>
+    </div>
+
+        
+</apex:component>

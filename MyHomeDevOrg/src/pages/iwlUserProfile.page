@@ -1,0 +1,13 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" >
+<apex:composition template="iwlsitetemplate">
+    <apex:define name="PageTitle">Salesforce Ideas - {!$ObjectType.User.Label} Profile</apex:define>
+    
+    <apex:define name="MainPanel">
+        <c:IWLDetailViewWidget DeveloperName="UserDetail" IdRecord="{!$CurrentPage.parameters.id}" rendered="{!$CurrentPage.parameters.id != null}"></c:IWLDetailViewWidget>
+                    
+        <c:IWLDetailViewWidget DeveloperName="UserDetail" IdRecord="{!$User.Id}" rendered="{!$CurrentPage.parameters.id == null}"></c:IWLDetailViewWidget>
+                    
+    </apex:define>
+</apex:composition>
+
+</apex:page>

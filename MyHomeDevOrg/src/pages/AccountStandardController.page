@@ -1,0 +1,13 @@
+<apex:page standardController="Account">
+    <apex:form >
+    {!$User.ProfileId}
+        <apex:pageBlock >
+            {!account.Name}
+            {!account.Owner.LastName}
+            <apex:repeat value="{!account.Contacts}" var="con">
+                {!con.LastName}
+            </apex:repeat>
+        </apex:pageBlock>
+        <apex:commandButton action="{!delete}" title="Delete" value="Delete"/>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,25 @@
+<apex:page showHeader="true" sidebar="true" controller="CustomPageTestFieldSetController">
+
+	<apex:panelBar switchType="client">
+
+        <apex:panelBarItem label="Item 1">data 1</apex:panelBarItem>
+
+        <apex:panelBarItem label="Item 2">data 2</apex:panelBarItem>
+
+        <apex:panelBarItem label="Item 3">data 3</apex:panelBarItem>
+
+    </apex:panelBar>
+
+
+	<apex:form >
+		<br></br>
+		<apex:repeat value="{!fieldSetFields}" var="field">
+		Checkbox
+			<apex:inputField value="{!obj[field]}" style="width:150px; height:37px;"/>
+		</apex:repeat>
+		<br></br>
+		<br></br>
+		<apex:commandButton action="{!save}" title="Save" style="width:150px; height:37px;" />
+
+	</apex:form>
+</apex:page>

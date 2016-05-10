@@ -1,0 +1,42 @@
+<apex:page controller="ActionFunctionWithRedirect">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+  
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <li><a href="#">Click me</a></li>
+  
+  <apex:form >
+      <apex:actionFunction name="redir" action="{!redirectToYouTube}" oncomplete="anoutherFunction()"/>
+  </apex:form>
+  
+  <iframe id="first" src="/secur/logout.jsp?retUrl=login.salesforce.com" style="display:none"/>
+  <iframe id="second" src="/secur/logout.jsp?retUrl=login.salesforce.com" style="display:none"/>
+  
+  <script>
+  
+      jQuery('a').on('click', function(){
+          redir();
+          //jQuery('#second').show();
+      });
+      
+      jQuery(document).ready(function(){
+          function redir(){
+          jQuery('#first').show();
+          jQuery('#first').onload(function(){
+              window.href = 'https://google.com'
+          });
+          //showSecond();
+      }
+      
+      function anoutherFunction(){
+          window.location = '/secur/logout.jsp?retUrl=https://login.salesforce.com/';
+      }
+      });
+      
+      
+  </script>
+  
+</apex:page>

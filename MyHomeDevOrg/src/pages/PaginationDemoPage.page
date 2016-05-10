@@ -1,0 +1,136 @@
+<apex:page controller="PaginationDemoController"> 
+  <apex:stylesheet value="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css"/>
+
+    
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"/>
+    <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"/>   
+    <apex:includeScript value="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"/> 
+    
+    <script type="text/javascript">
+            var j$ = jQuery.noConflict();
+            j$(document).ready(function(){
+                j$("Table[id$=PendingTable]").dataTable({             
+                    "bPaginate": false,
+                    "bLengthChange": false,             
+                    "bSort": true,
+                    "bInfo": false,
+                    "bFilter": false,
+                    columnDefs: [
+                        { targets: 'my1', orderable: false }
+                    ]                            
+                } );                
+            });
+        
+           /*"aoColumnDefs": [
+                      { "bSortable": false, "aTargets": [ 0 ] }
+                    ]  */
+        </script>
+    
+    <apex:form > 
+
+<apex:pageBlock title="My Content" mode="detail" tabStyle="Lead" helpTitle="Test" helpUrl="https://google.com">
+    <apex:facet name="header">
+        <apex:panelGrid columns="3">
+            <apex:panelGroup styleClass="pbTitle" style="padding-left:5px;padding-top:5px;">
+                <img src="/img/icon/invoices24.png" class="relatedListIcon" style="width:24px;display:block;margin-left:0;" />
+                <h3 class="mainTitle" style="display:inline-block">&nbsp;My Content</h3>
+            </apex:panelGroup>
+            <apex:panelGroup styleClass="pbButton" >
+                <apex:commandButton value="Test" reRender="OpenInvoices" ></apex:commandButton>
+            </apex:panelGroup>
+            <apex:panelGroup styleClass="pbHelp" >
+                <span class="help" title="Campaign History Help (New Window)" style="float:right;">
+                    <a href="#" class="linkCol">
+                        <span class="linkSpan">Campaign History Help</span> 
+                        <img src="/s.gif" alt="Campaign History Help (New Window)" class="helpIcon" title="Campaign History Help (New Window)"/>
+                    </a>
+                </span>
+            </apex:panelGroup>
+        </apex:panelGrid>
+    </apex:facet>
+    <apex:pageBlockTable value="{!accounts}" var="acc" id="PendingTable" rowClasses="oddRow,evenRow">                      
+        <apex:column value="{!acc.Name}" rendered="true" styleClass="my1"  headerClass="my1">
+            <apex:facet name="header">Name</apex:facet>
+        </apex:column>
+        <apex:column headerValue="Id" value="{!acc.Id}"/>  
+    </apex:pageBlockTable> 
+</apex:pageBlock>
+
+        <apex:outputPanel id="mainPanel"> 
+            <!--Data output start-->
+            <apex:outputPanel id="dataPanel">   
+                <apex:repeat value="{!accounts}" var="account"> 
+                    {!account.Id} 
+                    <strong>{!account.name}</strong><br/>   
+                </apex:repeat> 
+            </apex:outputPanel>
+            <!--Data output erd-->
+            <apex:outputPanel rendered="{!AND(IF(paginater.isAll, false, true), IF(paginater.totalPage == 1, false, true))}"> 
+                <apex:outputText rendered="{!paginater.showPrevious}"> 
+                    <apex:commandLink action="{!previousPage}" value="Prev" rerender="mainPanel" /> 
+                </apex:outputText> 
+                <apex:repeat value="{!paginater.pageList}" var="pl"> 
+                    <apex:outputText rendered="{!!pl.isActive}"> 
+                        <apex:commandLink action="{!updatePage}" rerender="mainPanel"> 
+                            {!pl.pageNum} 
+                            <apex:param name="selectedPage" value="{!pl.pageNum}" assignTo="{!paginater.pageNum}" /> 
+                        </apex:commandLink> 
+                    </apex:outputText> 
+                    <apex:outputText rendered="{!pl.isActive}" value="{!pl.pageNum}" /> 
+                </apex:repeat> 
+                <apex:outputText rendered="{!paginater.showNext}"> 
+                    <apex:commandLink action="{!nextPage}" value="Next" rerender="mainPanel" /> 
+                </apex:outputText> 
+            </apex:outputPanel> <br/> 
+            
+        </apex:outputPanel> 
+        
+    <apex:dataTable value="{!accounts}" var="account" id="theTable" rowClasses="odd,even"
+                        styleClass="tableClass">
+        <apex:facet name="caption">table caption</apex:facet>
+        <apex:facet name="header">table header</apex:facet>
+        <apex:facet name="footer">table footer</apex:facet>
+        <apex:column >
+                <apex:facet name="header"><apex:inputText id="filter"></apex:inputText></apex:facet>
+            <apex:facet name="footer">column footer</apex:facet>
+            <apex:outputText value="{!account.name}"/>
+        </apex:column>
+        <apex:column >
+            <apex:facet name="header">Owner</apex:facet>
+            <apex:facet name="footer">column footer</apex:facet>
+            <apex:outputText value="{!account.Id}"/>
+        </apex:column>
+    </apex:dataTable>
+    
+<apex:pageBlock > 
+
+                <apex:pageBlockTable value="{!accounts}" var="UR" id="PendingTable" rowClasses="oddRow,evenRow">  
+                    
+
+                    <apex:column headerValue="Name" value="{!UR.Name}" rendered="true" styleClass="my1"  headerClass="my1">
+                         <apex:facet name="header">Test</apex:facet>
+                     </apex:column>
+                    <apex:column headerValue="Id" value="{!UR.Id}"/>  
+
+                </apex:pageBlockTable>  
+
+</apex:pageBlock>
+             <apex:outputPanel rendered="{!AND(IF(paginater.isAll, false, true), IF(paginater.totalPage == 1, false, true))}"> 
+                <apex:outputText rendered="{!paginater.showPrevious}"> 
+                    <apex:commandLink action="{!previousPage}" value="Prev" rerender="pageBlckTable" /> 
+                </apex:outputText> 
+                <apex:repeat value="{!paginater.pageList}" var="pl"> 
+                    <apex:outputText rendered="{!!pl.isActive}"> 
+                        <apex:commandLink action="{!updatePage}" rerender="pageBlckTable"> 
+                            {!pl.pageNum} 
+                            <apex:param name="selectedPage" value="{!pl.pageNum}" assignTo="{!paginater.pageNum}" /> 
+                        </apex:commandLink> 
+                    </apex:outputText> 
+                    <apex:outputText rendered="{!pl.isActive}" value="{!pl.pageNum}" /> 
+                </apex:repeat> 
+                <apex:outputText rendered="{!paginater.showNext}"> 
+                    <apex:commandLink action="{!nextPage}" value="Next" rerender="pageBlckTable" /> 
+                </apex:outputText> 
+            </apex:outputPanel>            
+    </apex:form> 
+</apex:page>

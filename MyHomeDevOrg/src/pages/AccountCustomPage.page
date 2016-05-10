@@ -1,0 +1,8 @@
+<apex:page showHeader="true" sidebar="true" title="AccountCustomPage" showChat="false" wizard="false" setup="false">
+	<apex:composition template="BaseTemplatePageForAccount">
+		<h1> This is Account page </h1>
+		<apex:insert name="header"></apex:insert>
+		<apex:insert name="body"></apex:insert>
+		<apex:insert name="footer"></apex:insert>
+	</apex:composition>	
+</apex:page>

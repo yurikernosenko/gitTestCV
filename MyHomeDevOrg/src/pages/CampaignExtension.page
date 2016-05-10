@@ -1,0 +1,37 @@
+<apex:page standardController="Campaign" applyHtmlTag="false" showHeader="false">
+    <html>
+        <head>
+        <script src="/soap/ajax/34.0/connection.js" type="text/javascript"></script>
+        <script src="/soap/ajax/34.0/apex.js" type="text/javascript"></script>
+
+            <script>
+
+window.onload = redir();
+               /*
+               var id = "{!campaign.id}";
+               var prefix = "{!LEFT(campaign.id, 3)}"; 
+                var result = sforce.connection.query("SELECT ID, Country__c from Campaign WHERE Id ='" +id + "'");
+                var records = result.getArray("records");
+                var campaignCountry = records[0].Country__c;
+                if(campaignCountry == "{!$User.Country}"){
+                    //window.location.href = '/'+ id ;
+                } else {
+                    window.top.location.href = '/' + prefix;
+                }*/
+                function redir(){
+                    if("{!campaign.Country__c}" != "{!$User.Country}"){
+                    console.log("{!campaign.Country__c}");
+                    console.log("{!$User.Country}");
+                        alert('You can not view this record.');
+                        var prefix = "{!LEFT(campaign.id, 3)}"; 
+                        window.top.location.href = '/' + prefix;
+                    }
+            } 
+            </script>
+        </head>
+        <body>
+        
+        </body>
+    </html>
+    
+</apex:page>

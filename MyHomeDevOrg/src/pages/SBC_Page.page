@@ -1,0 +1,116 @@
+<apex:page controller="SBC_Fidelity_Controller" showHeader="true" sidebar="true">
+    <style>
+
+        #searchBlock{
+            max-width: 350px;
+            padding-left: 10px;
+            display: inline-block;
+            float: left;
+            width: 100%;
+        }
+
+        .searchBlockFields{
+            width: 100%;
+            margin-top: 10px;
+        }   
+
+        .inputfields input{
+            width: 100%;
+        }
+
+        #outputBlock{
+            display: inline-block;
+            float: left;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function getIndividualsImages(){
+            console.log('in');
+        }
+    </script>
+   
+    <apex:pageBlock mode="maindetail">
+    
+    <apex:form >
+    
+    <div id="sbc">
+        <div id="searchBlock" >
+            
+                    <div id="searchTitle" class="searchBlockFields">
+                        <b>
+                            SEARCH CRITERIA
+                        </b>
+                    </div>
+
+                    <div class="searchBlockFields">
+                        <b>
+                            Individuals Name
+                        </b>
+                    </div>
+                    <div class="inputfields">
+                        <apex:inputText id="individualsName" value="{!individualsName}" />
+                    </div>
+
+                    <!-- <div class="searchBlockFields">
+                            <b>
+                                ADDITIONAL MATCH CRITERIA
+                            </b>
+                    </div>
+                    <div class="searchBlockFields">
+                        <b>
+                            Company Name
+                        </b>
+                    </div>
+                    <div class="inputfields">
+                        <apex:inputText id="companyName" value="{!companyName}"/>
+                    </div>
+
+                    <div class="searchBlockFields">
+                        <b>
+                            Individuals Location
+                        </b>
+                    </div>
+                    <div class="inputfields">
+                        <apex:inputText id="addressLocation" value="{!addressLocation}"/>
+                    </div>
+ -->
+ <apex:actionFunction name="searchRecords" action="{!search}" oncomplete="getIndividualsImages()" rerender="pb" />
+                    <div style="padding-top:30px" align="center">
+                        <input type="button" value="Search" onclick="searchRecords();"/>
+                        <!-- <apex:commandButton action="{!search}" value="Search"/> -->
+                    </div>
+                    
+        
+        </div>  
+
+        <div id="outputBlock">
+            <apex:pageBlock id="pb">
+            <div>
+                <apex:repeat value="{!Individuals}" var="individual">
+                    <div style="display: inline-block; float:left; padding-left:10px; margin:30px">
+                        <c:SBCCard individual="{!individual}" id="resultCard"/> 
+                    }
+                    </div>
+                </apex:repeat>
+            </div>
+            
+            <apex:panelGrid columns="7">
+                <apex:commandButton status="fetchStatus" reRender="pb" value="|<" action="{!setcon.first}" disabled="{!!setCon.hasPrevious}" title="First Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value="<" action="{!setcon.previous}" disabled="{!!setCon.hasPrevious}" title="Previous Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value=">" action="{!setcon.next}" disabled="{!!setCon.hasNext}" title="Next Page"/>
+                <apex:commandButton status="fetchStatus" reRender="pb" value=">|" action="{!setcon.last}" disabled="{!!setCon.hasNext}" title="Last Page"/>
+                <apex:outputPanel style="color:#4AA02C;font-weight:bold">
+                    <apex:actionStatus id="fetchStatus" startText="Fetching..." stopText=""/>
+                </apex:outputPanel>
+            </apex:panelGrid>
+            </apex:pageBlock>
+        </div>
+         
+    </div>
+    </apex:form>  
+
+
+
+    </apex:pageBlock>
+</apex:page>

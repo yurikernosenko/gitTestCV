@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>HoursAbbr</fullName>
+        <categories>TextEntries</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Hours Abbreviation</shortDescription>
+        <value>h</value>
+    </labels>
+    <labels>
+        <fullName>NoActivityAvailable</fullName>
+        <categories>Exceptions</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>No Activity Available</shortDescription>
+        <value>No activity available</value>
+    </labels>
+    <labels>
+        <fullName>UpsertinSMOfficerError</fullName>
+        <categories>Exceptions</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>UpsertinSMOfficerError</shortDescription>
+        <value>Error on upserting SMOfficer</value>
+    </labels>
+    <labels>
+        <fullName>ValidateNameError</fullName>
+        <categories>Exceptions</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ValidateNameError</shortDescription>
+        <value>Please input correct Name</value>
+    </labels>
+    <labels>
+        <fullName>ValidateSearchExpressionError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ValidateSearchExpressionError</shortDescription>
+        <value>Please input search expression</value>
+    </labels>
+</CustomLabels>

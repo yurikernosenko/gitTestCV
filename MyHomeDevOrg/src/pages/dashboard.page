@@ -1,0 +1,7 @@
+<apex:page >
+<a href="https://devorgtest-developer-edition.eu0.force.com/test22">Back</a>
+<div style="width:100%; height: 500px; margin:0; display:inline-block;">
+    <c:DashboardComponentTest firstType="Status" secondType="Priority"/>
+    
+</div>
+</apex:page>

@@ -1,0 +1,38 @@
+<apex:page standardController="OpportunityLineItem" extensions="OpportunityPerojectAddProduct">
+    <script type="text/javascript">
+      function serch() {
+        searchServer(
+          document.getElementById("productName").value
+          );
+      }
+      </script> 
+      
+    <apex:pageBlock id="mainBlock">
+
+            <div>
+                {!opportunity.Name} | {!opportunity.Id}
+            </div>
+            
+        <apex:form >
+            <label for='searchByProductNameInput' id='labelSearchByProductNameInput'>Name </label>
+            <input id='productName' type='text' />
+            <apex:actionFunction name="searchServer" action="{!searchProducts}" rerender="mainBlock">
+                <apex:param name="productName" value=""/>
+            </apex:actionFunction>
+            
+            <input type='button' onclick='serch()' value='Search'/>
+        </apex:form>
+
+        <apex:repeat id="products" value="{!products}" var="product"> 
+        <tr>
+            <td>
+                <apex:outputText >{!product['Name']}</apex:outputText>
+            </td>
+            <td>
+                <input type='button' style='width:50px;' value='Add'/>
+            </td>
+        </tr>
+
+        </apex:repeat>
+    </apex:pageBlock>
+</apex:page>

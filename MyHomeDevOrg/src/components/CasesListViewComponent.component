@@ -1,0 +1,71 @@
+<apex:component controller="CasesListViewComponentController">
+<apex:includescript value="//code.jquery.com/jquery-1.11.1.min.js" />
+
+<script>
+    j$ = jQuery.noConflict();
+    function showSelectedView(){
+        dispalyListView(
+            document.getElementById("listViewType").value
+        );
+
+    }
+</script>
+
+<div>
+    <apex:form >
+    <apex:actionFunction name="dispalyListView" action="{!casesListView}" reRender="tableItems">
+        <apex:param name="viewType" value="" assignTo="{!viewType}"/>
+    </apex:actionFunction>
+    
+    <select id="listViewType">
+        <option></option>
+        <apex:repeat value="{!items}" var="item" >
+            <option value="{!item.Value}">{!item.Label}</option>
+        </apex:repeat>
+    </select>
+                                    
+
+    <input type='button' value="Go" onclick="showSelectedView()"/>
+
+    <apex:outputPanel layout="block" id="tableItems">
+    <apex:outputPanel layout="block" rendered="{!cases != null}">
+    A {!cases != null}
+    B {!cases.size !=0} {!cases.size}
+
+    <div >
+        <table>
+            <thead>
+                <tr>
+                    <th>Case Number</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th>Planned Release Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <apex:repeat value="{!cases}" var="case">
+                    <tr>
+                        <td>
+                            <apex:outputLink target="_blank" value="/{!case.Id}">
+                                {!case.CaseNumber}
+                            </apex:outputLink>
+                        </td>
+                        <td>{!case.Status}</td>
+                        <td>{!case.Priority}</td>
+                        <td>{!case.Type}</td>
+                        <td>
+                            <apex:outputLink target="_blank" value="/{!case.AccountId}">
+                                {!case.Account.Name}
+                            </apex:outputLink>
+                        </td>
+                    </tr>
+                </apex:repeat>
+            </tbody>
+        </table>
+    </div>
+    </apex:outputPanel>
+    </apex:outputPanel>
+    </apex:form>
+    </div>
+</apex:component>
